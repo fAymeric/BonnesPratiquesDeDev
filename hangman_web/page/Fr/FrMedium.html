@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Le Pendu Difficulté : Moyen</title>
+    <link rel="stylesheet" type="text/css" href="../../static/style.css">
+    <script type ="text/javascript" src="../../JS/script.js"></script>
+</head>
+<body>
+<audio class="BackgroundMusic" id="background-music" autoplay loop controls>
+    <source src="../../static/HorrorMusic.mp4" type="audio/mpeg">
+</audio>
+<div class="controlMusic">
+    <button class="control-button" onclick="playMusic()"><img src="../../static/MusicON.png" alt="musique allumée" class="imgMusique"> </button>
+    <button class="control-button" onclick="pauseMusic()"><img src="../../static/MusicOFF.png" alt="musique éteinte" class="imgMusique"></button>
+</div>
+<div class="Title">
+    <p> Et maintenant jouons... </p>
+</div>
+<div class="gameprint">
+    <p>Mot : {{range .GuessedWord}}
+        {{.}}
+        {{end}}
+    </p>
+    <p> Lettre déjà tapées : {{.GuessedLetter}}</p>
+</div>
+{{ if eq .Try 9 }}
+<img class="overlayImage" src="../../static/1.png" width="1280">
+{{ end }}
+{{ if eq .Try 8 }}
+<img class="overlayImage" src="../../static/2.png" width="1280">
+{{ end }}
+{{ if eq .Try 7 }}
+<img class="overlayImage" src="../../static/3.png" width="1280">
+{{ end }}
+{{ if eq .Try 6 }}
+<img class="overlayImage" src="../../static/4.png" width="1280">
+{{ end }}
+{{ if eq .Try 5 }}
+<img class="overlayImage" src="../../static/5.png" width="1280">
+{{ end }}
+{{ if eq .Try 4 }}
+<img class="overlayImage" src="../../static/6.png" width="1280">
+{{ end }}
+{{ if eq .Try 3 }}
+<img class="overlayImage" src="../../static/7.png" width="1280">
+{{ end }}
+{{ if eq .Try 2 }}
+<img class="overlayImage" src="../../static/8.png" width="1280">
+{{ end }}
+{{ if eq .Try 1 }}
+<img class="overlayImage" src="../../static/9.png" width="1280">
+{{ end }}
+<div class="letters">
+    <p>
+    <form method="post" style="display:inline;">
+        <input type="hidden" name="guess" value="a">
+        <button class="buttonLetter" type="submit">A</button>
+    </form>
+    <form method="post" style="display:inline;">
+        <input type="hidden" name="guess" value="b">
+        <button class="buttonLetter" type="submit">B</button>
+    </form>
+    <form method="post" style="display:inline;">
+        <input type="hidden" name="guess" value="c">
+        <button class="buttonLetter" type="submit">C</button>
+    </form>
+    <form method="post" style="display:inline;">
+        <input type="hidden" name="guess" value="d">
+        <button class="buttonLetter" type="submit">D</button>
+    </form>
+    <form method="post" style="display:inline;">
+        <input type="hidden" name="guess" value="e">
+        <button class="buttonLetter" type="submit">E</button>
+    </form>
+    <form method="post" style="display:inline;">
+        <input type="hidden" name="guess" value="f">
+        <button class="buttonLetter" type="submit">F</button>
+    </form>
+    <form method="post" style="display:inline;">
+        <input type="hidden" name="guess" value="g">
+        <button class="buttonLetter" type="submit">G</button>
+    </form>
+    <form method="post" style="display:inline;">
+        <input type="hidden" name="guess" value="h">
+        <button class="buttonLetter" type="submit">H</button>
+    </form>
+    <form method="post" style="display:inline;">
+        <input type="hidden" name="guess" value="i">
+        <button class="buttonLetter" type="submit">I</button>
+    </form>
+    <form method="post" style="display:inline;">
+        <input type="hidden" name="guess" value="j">
+        <button class="buttonLetter" type="submit">J</button>
+    </form>
+    <form method="post" style="display:inline;">
+        <input type="hidden" name="guess" value="k">
+        <button class="buttonLetter" type="submit">K</button>
+    </form>
+    <form method="post" style="display:inline;">
+        <input type="hidden" name="guess" value="l">
+        <button class="buttonLetter" type="submit">L</button>
+    </form>
+    <form method="post" style="display:inline;">
+        <input type="hidden" name="guess" value="m">
+        <button class="buttonLetter" type="submit">M</button>
+    </form>
+    <form method="post" style="display:inline;">
+        <input type="hidden" name="guess" value="n">
+        <button class="buttonLetter" type="submit">N</button>
+    </form>
+    <form method="post" style="display:inline;">
+        <input type="hidden" name="guess" value="o">
+        <button class="buttonLetter" type="submit">O</button>
+    </form>
+    <form method="post" style="display:inline;">
+        <input type="hidden" name="guess" value="p">
+        <button class="buttonLetter" type="submit">P</button>
+    </form>
+    <form method="post" style="display:inline;">
+        <input type="hidden" name="guess" value="q">
+        <button class="buttonLetter" type="submit">Q</button>
+    </form>
+    <form method="post" style="display:inline;">
+        <input type="hidden" name="guess" value="r">
+        <button class="buttonLetter" type="submit">R</button>
+    </form>
+    <form method="post" style="display:inline;">
+        <input type="hidden" name="guess" value="s">
+        <button class="buttonLetter" type="submit">S</button>
+    </form>
+    <form method="post" style="display:inline;">
+        <input type="hidden" name="guess" value="t">
+        <button class="buttonLetter" type="submit">T</button>
+    </form>
+    <form method="post" style="display:inline;">
+        <input type="hidden" name="guess" value="u">
+        <button class="buttonLetter" type="submit">U</button>
+    </form>
+    <form method="post" style="display:inline;">
+        <input type="hidden" name="guess" value="v">
+        <button class="buttonLetter" type="submit">V</button>
+    </form>
+    <form method="post" style="display:inline;">
+        <input type="hidden" name="guess" value="w">
+        <button class="buttonLetter" type="submit">W</button>
+    </form>
+    <form method="post" style="display:inline;">
+        <input type="hidden" name="guess" value="x">
+        <button class="buttonLetter" type="submit">X</button>
+    </form>
+    <form method="post" style="display:inline;">
+        <input type="hidden" name="guess" value="y">
+        <button class="buttonLetter" type="submit">Y</button>
+    </form>
+    <form method="post" style="display:inline;">
+        <input type="hidden" name="guess" value="z">
+        <button class="buttonLetter" type="submit">Z</button>
+    </form>
+</div>
+<div class="suppositionContainer">
+    <form autocomplete="off" method="post">
+        <label class="supposition" for="guessWord">Supposition: </label>
+        <input class="supposition" type="text" id="guessWord" name="guessWord" pattern="^[a-zA-Z]+$" required>
+        <button class="supposition" type="submit">Soumettre</button>
+    </form>
+</div>
+<div class="BackButton">
+    <div class="card">
+        <div class="InfoPres">
+            <p><a href="/Fr">Retour</a></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
