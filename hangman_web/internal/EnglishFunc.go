@@ -1,9 +1,9 @@
-package main
+package internal
 
 import (
+	"html/template"
 	"net/http"
 )
-import "html/template"
 
 func EnPage(w http.ResponseWriter, r *http.Request) {
 	Tg := template.Must(template.ParseFiles("./page/En.html"))

@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
+	"html/template"
 	"net/http"
 	"os"
 	"path/filepath"
 )
-import "html/template"
 
 type ScoreEntry struct {
 	Pseudo     string
@@ -30,35 +30,7 @@ var currentGame Game
 var alphabet = "abcdefghijklmnopqrstuvwxyz"
 
 func main() {
-	startServer()
-}
-
-func startServer() {
-	http.HandleFunc("/", Homepage)
-	http.HandleFunc("/EnWin", EnWinpage)
-	http.HandleFunc("/EnLoose", EnLoosepage)
-	http.HandleFunc("/DeutschWin", DeutschWinpage)
-	http.HandleFunc("/DeutschLoose", DeutschLoosepage)
-	http.HandleFunc("/FrWin", FrWinpage)
-	http.HandleFunc("/FrLoose", FrLoosepage)
-	http.HandleFunc("/language", LanguagePage)
-	http.HandleFunc("/Fr", FrPage)
-	http.HandleFunc("/En", EnPage)
-	http.HandleFunc("/Deutsch", DeutschPage)
-	http.HandleFunc("/Fr/easy", FrEasyPage)
-	http.HandleFunc("/Fr/medium", FrMediumPage)
-	http.HandleFunc("/Fr/hard", FrHardPage)
-	http.HandleFunc("/En/easy", EnEasyPage)
-	http.HandleFunc("/En/medium", EnMediumPage)
-	http.HandleFunc("/En/hard", EnHardPage)
-	http.HandleFunc("/Deutsch/easy", DeutschEasyPage)
-	http.HandleFunc("/Deutsch/medium", DeutschMediumPage)
-	http.HandleFunc("/Deutsch/hard", DeutschHardPage)
-	http.HandleFunc("/JS/", filesHandler)
-	fs := http.FileServer(http.Dir("static"))
-	http.Handle("/static/", http.StripPrefix("/static/", fs))
-	http.ListenAndServe(":8080", nil)
-
+	server.startServer()
 }
 
 func Homepage(w http.ResponseWriter, r *http.Request) {
@@ -70,7 +42,7 @@ func Homepage(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Render the homepage template
-	Th := template.Must(template.ParseFiles("./page/SiteH.html"))
+	Th := template.Must(template.ParseFiles("../web/template/SiteH.html"))
 	Th.Execute(w, struct {
 		Scores []ScoreEntry
 	}{
@@ -79,7 +51,7 @@ func Homepage(w http.ResponseWriter, r *http.Request) {
 }
 
 func LanguagePage(w http.ResponseWriter, r *http.Request) {
-	Tg := template.Must(template.ParseFiles("./page/Language.html"))
+	Tg := template.Must(template.ParseFiles("../web/template/Language.html"))
 	if r.Method != "POST" && user == "" {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return

@@ -1,10 +1,10 @@
-package main
+package internal
 
 import (
 	Hangman "HangmanWeb/OriginalHangman/pkg"
+	"html/template"
 	"net/http"
 )
-import "html/template"
 
 func EnEasyPage(w http.ResponseWriter, r *http.Request) {
 	Tg := template.Must(template.ParseFiles("./page/En/EnEasy.html"))

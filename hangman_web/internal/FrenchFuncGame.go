@@ -1,19 +1,15 @@
-package main
+package internal
 
 import (
 	Hangman "HangmanWeb/OriginalHangman/pkg"
+	"html/template"
 	"net/http"
 )
-import "html/template"
 
-func DeutschEasyPage(w http.ResponseWriter, r *http.Request) {
-	Tg := template.Must(template.ParseFiles("./page/Deutsch/DeutschEasy.html"))
-	if user == "" {
-		http.Redirect(w, r, "/", http.StatusSeeOther)
-		return
-	}
+func FrEasyPage(w http.ResponseWriter, r *http.Request) {
+	Tg := template.Must(template.ParseFiles("./page/FR/FrEasy.html"))
 	if currentGame.WordSelect == "" {
-		currentGame = Game(Hangman.GameInit("OriginalHangman/data/deutsch/words.txt"))
+		currentGame = Game(Hangman.GameInit("OriginalHangman/data/french/words.txt"))
 	}
 	if r.Method == http.MethodPost {
 		guess := r.FormValue("guess")
@@ -25,11 +21,11 @@ func DeutschEasyPage(w http.ResponseWriter, r *http.Request) {
 		currentGame.Try = Hangman.GetTryAttempt()
 		currentGame.Alphabet = alphabet
 		if Hangman.GetTryAttempt() == 0 {
-			http.Redirect(w, r, "/DeutschLoose", http.StatusFound)
+			http.Redirect(w, r, "/FrLoose", http.StatusFound)
 			return
 		}
 		if Hangman.CheckVictory() == true || currentGame.WordSelect == guessWord {
-			http.Redirect(w, r, "/DeutschWin", http.StatusFound)
+			http.Redirect(w, r, "/FrWin", http.StatusFound)
 			Score++
 			updated := false
 			for i, scoreEntry := range scores {
@@ -49,15 +45,10 @@ func DeutschEasyPage(w http.ResponseWriter, r *http.Request) {
 
 	Tg.Execute(w, currentGame)
 }
-
-func DeutschMediumPage(w http.ResponseWriter, r *http.Request) {
-	Tg := template.Must(template.ParseFiles("./page/Deutsch/DeutschMedium.html"))
-	if user == "" {
-		http.Redirect(w, r, "/", http.StatusSeeOther)
-		return
-	}
+func FrMediumPage(w http.ResponseWriter, r *http.Request) {
+	Tg := template.Must(template.ParseFiles("./page/Fr/FrMedium.html"))
 	if currentGame.WordSelect == "" {
-		currentGame = Game(Hangman.GameInit("OriginalHangman/data/deutsch/words2.txt"))
+		currentGame = Game(Hangman.GameInit("OriginalHangman/data/french/words2.txt"))
 	}
 	if r.Method == http.MethodPost {
 		guess := r.FormValue("guess")
@@ -69,11 +60,11 @@ func DeutschMediumPage(w http.ResponseWriter, r *http.Request) {
 		currentGame.Try = Hangman.GetTryAttempt()
 		currentGame.Alphabet = alphabet
 		if Hangman.GetTryAttempt() == 0 {
-			http.Redirect(w, r, "/DeutschLoose", http.StatusFound)
+			http.Redirect(w, r, "/FrLoose", http.StatusFound)
 			return
 		}
 		if Hangman.CheckVictory() == true || currentGame.WordSelect == guessWord {
-			http.Redirect(w, r, "/DeutschWin", http.StatusFound)
+			http.Redirect(w, r, "/FrWin", http.StatusFound)
 			Score++
 			updated := false
 			for i, scoreEntry := range scores {
@@ -93,14 +84,10 @@ func DeutschMediumPage(w http.ResponseWriter, r *http.Request) {
 
 	Tg.Execute(w, currentGame)
 }
-func DeutschHardPage(w http.ResponseWriter, r *http.Request) {
-	Tg := template.Must(template.ParseFiles("./page/Deutsch/DeutschHard.html"))
-	if user == "" {
-		http.Redirect(w, r, "/", http.StatusSeeOther)
-		return
-	}
+func FrHardPage(w http.ResponseWriter, r *http.Request) {
+	Tg := template.Must(template.ParseFiles("./page/FR/FrHard.html"))
 	if currentGame.WordSelect == "" {
-		currentGame = Game(Hangman.GameInit("OriginalHangman/data/deutsch/words3.txt"))
+		currentGame = Game(Hangman.GameInit("OriginalHangman/data/french/words3.txt"))
 	}
 	if r.Method == http.MethodPost {
 		guess := r.FormValue("guess")
@@ -112,11 +99,11 @@ func DeutschHardPage(w http.ResponseWriter, r *http.Request) {
 		currentGame.Try = Hangman.GetTryAttempt()
 		currentGame.Alphabet = alphabet
 		if Hangman.GetTryAttempt() == 0 {
-			http.Redirect(w, r, "/DeutschLoose", http.StatusFound)
+			http.Redirect(w, r, "/FrLoose", http.StatusFound)
 			return
 		}
 		if Hangman.CheckVictory() == true || currentGame.WordSelect == guessWord {
-			http.Redirect(w, r, "/DeutschWin", http.StatusFound)
+			http.Redirect(w, r, "/FrWin", http.StatusFound)
 			Score++
 			updated := false
 			for i, scoreEntry := range scores {
