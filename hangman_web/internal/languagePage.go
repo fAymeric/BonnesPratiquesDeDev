@@ -7,7 +7,7 @@ import (
 )
 
 func LanguagePage(w http.ResponseWriter, r *http.Request) {
-	Tg := template.Must(template.ParseFiles("../web/template/Language.html"))
+	Tg := template.Must(template.ParseFiles("web/template/Language.html"))
 	if r.Method != "POST" && user == "" {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return

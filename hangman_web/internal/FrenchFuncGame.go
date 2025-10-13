@@ -6,9 +6,9 @@ import (
 )
 
 func FrEasyPage(w http.ResponseWriter, r *http.Request) {
-	Tg := template.Must(template.ParseFiles("./page/FR/FrEasy.html"))
+	Tg := template.Must(template.ParseFiles("web/template/Fr/FrEasy.html"))
 	if currentGame.WordSelect == "" {
-		currentGame = Game(GameInit("OriginalHangman/data/french/words.txt"))
+		currentGame = Game(GameInit("internal/data/french/words.txt"))
 	}
 	if r.Method == http.MethodPost {
 		guess := r.FormValue("guess")
@@ -45,9 +45,9 @@ func FrEasyPage(w http.ResponseWriter, r *http.Request) {
 	Tg.Execute(w, currentGame)
 }
 func FrMediumPage(w http.ResponseWriter, r *http.Request) {
-	Tg := template.Must(template.ParseFiles("./page/Fr/FrMedium.html"))
+	Tg := template.Must(template.ParseFiles("web/template/Fr/FrMedium.html"))
 	if currentGame.WordSelect == "" {
-		currentGame = Game(GameInit("OriginalHangman/data/french/words2.txt"))
+		currentGame = Game(GameInit("internal/data/french/words2.txt"))
 	}
 	if r.Method == http.MethodPost {
 		guess := r.FormValue("guess")
@@ -84,9 +84,9 @@ func FrMediumPage(w http.ResponseWriter, r *http.Request) {
 	Tg.Execute(w, currentGame)
 }
 func FrHardPage(w http.ResponseWriter, r *http.Request) {
-	Tg := template.Must(template.ParseFiles("./page/FR/FrHard.html"))
+	Tg := template.Must(template.ParseFiles("web/template/Fr/FrHard.html"))
 	if currentGame.WordSelect == "" {
-		currentGame = Game(GameInit("OriginalHangman/data/french/words3.txt"))
+		currentGame = Game(GameInit("internal/data/french/words3.txt"))
 	}
 	if r.Method == http.MethodPost {
 		guess := r.FormValue("guess")

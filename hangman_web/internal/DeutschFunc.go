@@ -6,7 +6,7 @@ import (
 )
 
 func DeutschPage(w http.ResponseWriter, r *http.Request) {
-	Tg := template.Must(template.ParseFiles("./page/Deutsch.html"))
+	Tg := template.Must(template.ParseFiles("web/template/Deutsch/Deutsch.html"))
 	if user == "" {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
@@ -15,7 +15,7 @@ func DeutschPage(w http.ResponseWriter, r *http.Request) {
 	Tg.Execute(w, nil)
 }
 func DeutschWinpage(w http.ResponseWriter, r *http.Request) {
-	Tg := template.Must(template.ParseFiles("./page/Deutsch/DeutschWin.html"))
+	Tg := template.Must(template.ParseFiles("web/template/Deutsch/DeutschWin.html"))
 	if user == "" {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
@@ -23,7 +23,7 @@ func DeutschWinpage(w http.ResponseWriter, r *http.Request) {
 	Tg.Execute(w, nil)
 }
 func DeutschLoosepage(w http.ResponseWriter, r *http.Request) {
-	Tg := template.Must(template.ParseFiles("./page/Deutsch/DeutschLoose.html"))
+	Tg := template.Must(template.ParseFiles("web/template/Deutsch/DeutschLoose.html"))
 	if user == "" {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return

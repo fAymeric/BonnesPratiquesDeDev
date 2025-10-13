@@ -14,7 +14,7 @@ func Homepage(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Render the homepage template
-	Th := template.Must(template.ParseFiles("../web/template/SiteH.html"))
+	Th := template.Must(template.ParseFiles("web/template/SiteH.html"))
 	Th.Execute(w, struct {
 		Scores []ScoreEntry
 	}{

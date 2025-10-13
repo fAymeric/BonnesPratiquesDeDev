@@ -6,7 +6,7 @@ import (
 )
 
 func EnPage(w http.ResponseWriter, r *http.Request) {
-	Tg := template.Must(template.ParseFiles("./page/En.html"))
+	Tg := template.Must(template.ParseFiles("web/template/En/En.html"))
 	if user == "" {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
@@ -15,7 +15,7 @@ func EnPage(w http.ResponseWriter, r *http.Request) {
 	Tg.Execute(w, nil)
 }
 func EnWinpage(w http.ResponseWriter, r *http.Request) {
-	Tg := template.Must(template.ParseFiles("./page/En/EnWin.html"))
+	Tg := template.Must(template.ParseFiles("web/template/En/EnWin.html"))
 	if user == "" {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
@@ -23,7 +23,7 @@ func EnWinpage(w http.ResponseWriter, r *http.Request) {
 	Tg.Execute(w, nil)
 }
 func EnLoosepage(w http.ResponseWriter, r *http.Request) {
-	Tg := template.Must(template.ParseFiles("./page/En/EnLoose.html"))
+	Tg := template.Must(template.ParseFiles("web/template/En/EnLoose.html"))
 	if user == "" {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return

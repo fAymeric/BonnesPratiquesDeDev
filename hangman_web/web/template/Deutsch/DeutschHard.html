@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Der Gehängte, Schwierigkeit : schwierig</title>
-    <link rel="stylesheet" type="text/css" href="../../static/style.css">
-    <script type ="text/javascript" src="../../JS/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="web/static/style.css">
+    <script type ="text/javascript" src="web/js/script.js"></script>
 </head>
 <body>
 <audio class="BackgroundMusic" id="background-music" autoplay loop controls>
-    <source src="../../static/HorrorMusic.mp4" type="audio/mpeg">
+    <source src="web/static/HorrorMusic.mp4" type="audio/mpeg">
 </audio>
 <div class="controlMusic">
-    <button class="control-button" onclick="playMusic()"><img src="../../static/MusicON.png" alt="musique allumée" class="imgMusique"> </button>
-    <button class="control-button" onclick="pauseMusic()"><img src="../../static/MusicOFF.png" alt="musique éteinte" class="imgMusique"></button>
+    <button class="control-button" onclick="playMusic()"><img src="web/static/MusicON.png" alt="musique allumée" class="imgMusique"> </button>
+    <button class="control-button" onclick="pauseMusic()"><img src="web/static/MusicOFF.png" alt="musique éteinte" class="imgMusique"></button>
 </div>
 <div class="Title">
     <p> Und jetzt lasst uns spielen... </p>
@@ -25,31 +25,31 @@
     <p> Brief bereits verschickt : {{.GuessedLetter}}</p>
 </div>
 {{ if eq .Try 9 }}
-<img class="overlayImage" src="../../static/1.png" width="1280">
+<img class="overlayImage" src="web/static/1.png" width="1280">
 {{ end }}
 {{ if eq .Try 8 }}
-<img class="overlayImage" src="../../static/2.png" width="1280">
+<img class="overlayImage" src="web/static/2.png" width="1280">
 {{ end }}
 {{ if eq .Try 7 }}
-<img class="overlayImage" src="../../static/3.png" width="1280">
+<img class="overlayImage" src="web/static/3.png" width="1280">
 {{ end }}
 {{ if eq .Try 6 }}
-<img class="overlayImage" src="../../static/4.png" width="1280">
+<img class="overlayImage" src="web/static/4.png" width="1280">
 {{ end }}
 {{ if eq .Try 5 }}
-<img class="overlayImage" src="../../static/5.png" width="1280">
+<img class="overlayImage" src="web/static/5.png" width="1280">
 {{ end }}
 {{ if eq .Try 4 }}
-<img class="overlayImage" src="../../static/6.png" width="1280">
+<img class="overlayImage" src="web/static/6.png" width="1280">
 {{ end }}
 {{ if eq .Try 3 }}
-<img class="overlayImage" src="../../static/7.png" width="1280">
+<img class="overlayImage" src="web/static/7.png" width="1280">
 {{ end }}
 {{ if eq .Try 2 }}
-<img class="overlayImage" src="../../static/8.png" width="1280">
+<img class="overlayImage" src="web/static/8.png" width="1280">
 {{ end }}
 {{ if eq .Try 1 }}
-<img class="overlayImage" src="../../static/9.png" width="1280">
+<img class="overlayImage" src="web/static/9.png" width="1280">
 {{ end }}
 <div class="letters">
     <p>

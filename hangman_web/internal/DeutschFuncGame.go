@@ -6,13 +6,13 @@ import (
 )
 
 func DeutschEasyPage(w http.ResponseWriter, r *http.Request) {
-	Tg := template.Must(template.ParseFiles("./page/Deutsch/DeutschEasy.html"))
+	Tg := template.Must(template.ParseFiles("web/template/Deutsch/DeutschEasy.html"))
 	if user == "" {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
 	if currentGame.WordSelect == "" {
-		currentGame = Game(GameInit("OriginalHangman/data/deutsch/words.txt"))
+		currentGame = Game(GameInit("internal/data/deutsch/words.txt"))
 	}
 	if r.Method == http.MethodPost {
 		guess := r.FormValue("guess")
@@ -50,13 +50,13 @@ func DeutschEasyPage(w http.ResponseWriter, r *http.Request) {
 }
 
 func DeutschMediumPage(w http.ResponseWriter, r *http.Request) {
-	Tg := template.Must(template.ParseFiles("./page/Deutsch/DeutschMedium.html"))
+	Tg := template.Must(template.ParseFiles("web/template/Deutsch/DeutschMedium.html"))
 	if user == "" {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
 	if currentGame.WordSelect == "" {
-		currentGame = Game(GameInit("OriginalHangman/data/deutsch/words2.txt"))
+		currentGame = Game(GameInit("internal/data/deutsch/words2.txt"))
 	}
 	if r.Method == http.MethodPost {
 		guess := r.FormValue("guess")
@@ -93,13 +93,13 @@ func DeutschMediumPage(w http.ResponseWriter, r *http.Request) {
 	Tg.Execute(w, currentGame)
 }
 func DeutschHardPage(w http.ResponseWriter, r *http.Request) {
-	Tg := template.Must(template.ParseFiles("./page/Deutsch/DeutschHard.html"))
+	Tg := template.Must(template.ParseFiles("web/template/Deutsch/DeutschHard.html"))
 	if user == "" {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
 	if currentGame.WordSelect == "" {
-		currentGame = Game(GameInit("OriginalHangman/data/deutsch/words3.txt"))
+		currentGame = Game(GameInit("internal/data/deutsch/words3.txt"))
 	}
 	if r.Method == http.MethodPost {
 		guess := r.FormValue("guess")

@@ -6,7 +6,7 @@ import (
 )
 
 func FrPage(w http.ResponseWriter, r *http.Request) {
-	Tg := template.Must(template.ParseFiles("./page/Fr.html"))
+	Tg := template.Must(template.ParseFiles("web/template/Fr/Fr.html"))
 	if user == "" {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
@@ -15,7 +15,7 @@ func FrPage(w http.ResponseWriter, r *http.Request) {
 	Tg.Execute(w, nil)
 }
 func FrWinpage(w http.ResponseWriter, r *http.Request) {
-	Tg := template.Must(template.ParseFiles("./page/Fr/FrWin.html"))
+	Tg := template.Must(template.ParseFiles("web/template/Fr/FrWin.html"))
 	if user == "" {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
@@ -23,7 +23,7 @@ func FrWinpage(w http.ResponseWriter, r *http.Request) {
 	Tg.Execute(w, nil)
 }
 func FrLoosepage(w http.ResponseWriter, r *http.Request) {
-	Tg := template.Must(template.ParseFiles("./page/Fr/FrLoose.html"))
+	Tg := template.Must(template.ParseFiles("web/template/Fr/FrLoose.html"))
 	if user == "" {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
