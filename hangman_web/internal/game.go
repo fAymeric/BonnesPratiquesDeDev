@@ -5,22 +5,6 @@ import (
 	"time"
 )
 
-type Game struct {
-	WordSelect    string
-	AppearLetter  []string
-	GuessedLetter []string
-	Try           int
-	GuessedWord   []string
-	Alphabet      string
-}
-
-var word string
-var letter string
-var guessedWord []string
-var guessedLetter []string
-var tryAttempt int
-var foundLetter bool
-
 func GameInit(filePath string) Game {
 	word = ChooseWord(filePath)
 	guessedWord = make([]string, len(word))

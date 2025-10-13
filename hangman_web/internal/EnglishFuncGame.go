@@ -1,7 +1,6 @@
 package internal
 
 import (
-	Hangman "HangmanWeb/OriginalHangman/pkg"
 	"html/template"
 	"net/http"
 )
@@ -13,22 +12,22 @@ func EnEasyPage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if currentGame.WordSelect == "" {
-		currentGame = Game(Hangman.GameInit("OriginalHangman/data/english/words.txt"))
+		currentGame = Game(GameInit("OriginalHangman/data/english/words.txt"))
 	}
 	if r.Method == http.MethodPost {
 		guess := r.FormValue("guess")
 		guessWord := r.FormValue("guessWord")
-		Hangman.SelecCharac(guess)
-		Hangman.SelecCharac(guessWord)
-		currentGame.GuessedWord = Hangman.GetGuessedWord()
-		currentGame.GuessedLetter = Hangman.GetGuessedLetter()
-		currentGame.Try = Hangman.GetTryAttempt()
+		SelecCharac(guess)
+		SelecCharac(guessWord)
+		currentGame.GuessedWord = GetGuessedWord()
+		currentGame.GuessedLetter = GetGuessedLetter()
+		currentGame.Try = GetTryAttempt()
 		currentGame.Alphabet = alphabet
-		if Hangman.GetTryAttempt() == 0 {
+		if GetTryAttempt() == 0 {
 			http.Redirect(w, r, "/EnLoose", http.StatusFound)
 			return
 		}
-		if Hangman.CheckVictory() == true || currentGame.WordSelect == guessWord {
+		if CheckVictory() == true || currentGame.WordSelect == guessWord {
 			http.Redirect(w, r, "/EnWin", http.StatusFound)
 			Score++
 			updated := false
@@ -56,22 +55,22 @@ func EnMediumPage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if currentGame.WordSelect == "" {
-		currentGame = Game(Hangman.GameInit("OriginalHangman/data/english/words2.txt"))
+		currentGame = Game(GameInit("OriginalHangman/data/english/words2.txt"))
 	}
 	if r.Method == http.MethodPost {
 		guess := r.FormValue("guess")
 		guessWord := r.FormValue("guessWord")
-		Hangman.SelecCharac(guess)
-		Hangman.SelecCharac(guessWord)
-		currentGame.GuessedWord = Hangman.GetGuessedWord()
-		currentGame.GuessedLetter = Hangman.GetGuessedLetter()
-		currentGame.Try = Hangman.GetTryAttempt()
+		SelecCharac(guess)
+		SelecCharac(guessWord)
+		currentGame.GuessedWord = GetGuessedWord()
+		currentGame.GuessedLetter = GetGuessedLetter()
+		currentGame.Try = GetTryAttempt()
 		currentGame.Alphabet = alphabet
-		if Hangman.GetTryAttempt() == 0 {
+		if GetTryAttempt() == 0 {
 			http.Redirect(w, r, "/EnLoose", http.StatusFound)
 			return
 		}
-		if Hangman.CheckVictory() == true || currentGame.WordSelect == guessWord {
+		if CheckVictory() == true || currentGame.WordSelect == guessWord {
 			http.Redirect(w, r, "/EnWin", http.StatusFound)
 			Score++
 			updated := false
@@ -99,22 +98,22 @@ func EnHardPage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if currentGame.WordSelect == "" {
-		currentGame = Game(Hangman.GameInit("OriginalHangman/data/english/words3.txt"))
+		currentGame = Game(GameInit("OriginalHangman/data/english/words3.txt"))
 	}
 	if r.Method == http.MethodPost {
 		guess := r.FormValue("guess")
 		guessWord := r.FormValue("guessWord")
-		Hangman.SelecCharac(guess)
-		Hangman.SelecCharac(guessWord)
-		currentGame.GuessedWord = Hangman.GetGuessedWord()
-		currentGame.GuessedLetter = Hangman.GetGuessedLetter()
-		currentGame.Try = Hangman.GetTryAttempt()
+		SelecCharac(guess)
+		SelecCharac(guessWord)
+		currentGame.GuessedWord = GetGuessedWord()
+		currentGame.GuessedLetter = GetGuessedLetter()
+		currentGame.Try = GetTryAttempt()
 		currentGame.Alphabet = alphabet
-		if Hangman.GetTryAttempt() == 0 {
+		if GetTryAttempt() == 0 {
 			http.Redirect(w, r, "/EnLoose", http.StatusFound)
 			return
 		}
-		if Hangman.CheckVictory() == true || currentGame.WordSelect == guessWord {
+		if CheckVictory() == true || currentGame.WordSelect == guessWord {
 			http.Redirect(w, r, "/EnWin", http.StatusFound)
 			Score++
 			updated := false
