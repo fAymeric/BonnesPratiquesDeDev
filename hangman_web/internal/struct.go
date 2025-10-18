@@ -23,7 +23,6 @@ var alphabet = []string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "
 	"n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"}
 
 var word string
-var letter string
 var guessedWord []string
 var guessedLetter []string
 var tryAttempt int

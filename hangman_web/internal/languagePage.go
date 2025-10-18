@@ -16,12 +16,18 @@ func LanguagePage(w http.ResponseWriter, r *http.Request) {
 	if user == "" {
 		user = r.FormValue("name")
 		fmt.Println("user : ", user)
-		Tg.Execute(w, nil)
+		err := Tg.Execute(w, nil)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
 	}
 	if user != "" && newUser != user {
 		user = newUser
 		Score = 0
 		fmt.Println("user : ", user)
-		Tg.Execute(w, nil)
+		err := Tg.Execute(w, nil)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
 	}
 }

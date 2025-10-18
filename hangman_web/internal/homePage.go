@@ -15,9 +15,12 @@ func Homepage(w http.ResponseWriter, r *http.Request) {
 
 	// Render the homepage template
 	Th := template.Must(template.ParseFiles("web/template/index.html"))
-	Th.Execute(w, struct {
+	err := Th.Execute(w, struct {
 		Scores []ScoreEntry
 	}{
 		Scores: scores,
 	})
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }

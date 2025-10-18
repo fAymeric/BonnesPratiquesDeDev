@@ -12,7 +12,10 @@ func EnPage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	currentGame = Game{}
-	Tg.Execute(w, nil)
+	err := Tg.Execute(w, nil)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }
 func EnWinpage(w http.ResponseWriter, r *http.Request) {
 	Tg := template.Must(template.ParseFiles("web/template/En/EnWin.html"))
@@ -20,7 +23,10 @@ func EnWinpage(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
-	Tg.Execute(w, nil)
+	err := Tg.Execute(w, nil)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }
 func EnLoosepage(w http.ResponseWriter, r *http.Request) {
 	Tg := template.Must(template.ParseFiles("web/template/En/EnLoose.html"))
@@ -33,5 +39,8 @@ func EnLoosepage(w http.ResponseWriter, r *http.Request) {
 	}{
 		WordSelect: currentGame.WordSelect,
 	}
-	Tg.Execute(w, looseData)
+	err := Tg.Execute(w, looseData)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }
