@@ -19,6 +19,7 @@ func GameInit(filePath string) Game {
 		GuessedWord: guessedWord,
 		WordSelect:  wordSelect,
 		Try:         tryAttempt,
+		Alphabet:    alphabet,
 	}
 }
 func RevealLetters() {
