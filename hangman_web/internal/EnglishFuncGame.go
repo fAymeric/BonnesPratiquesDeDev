@@ -41,7 +41,7 @@ func EnGamePage(w http.ResponseWriter, r *http.Request, difficulty string) {
 
 	// Initialize game if not already done
 	if currentGame.WordSelect == "" {
-		currentGame = Game(GameInit(wordFile))
+		currentGame = GameInit(wordFile)
 	}
 
 	// Handle form POST
@@ -79,5 +79,8 @@ func EnGamePage(w http.ResponseWriter, r *http.Request, difficulty string) {
 		}
 	}
 
-	Tg.Execute(w, currentGame)
+	err := Tg.Execute(w, currentGame)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }
