@@ -7,7 +7,7 @@ import (
 
 func SelecCharac(letter string) Game {
 	//fmt.Println("test de lettre : ", letter)
-	foundLetter = false
+	FoundLetter = false
 	letter = strings.ToLower(letter)
 	if !CheckLetter(letter) || !CheckLetterAlreadySay(letter) {
 		return Game{}
@@ -15,15 +15,15 @@ func SelecCharac(letter string) Game {
 		if len(letter) <= 1 {
 			fmt.Println("test1 de lettre : ", letter)
 			CheckLetterWord(letter)
-			if foundLetter == false {
+			if FoundLetter == false {
 				fmt.Println("Your caracter is not in the word")
 				LooseTry()
 			} else {
 				fmt.Println("Your caracter is in the word")
 			}
-			guessedLetter = append(guessedLetter, letter)
+			GuessedLetter = append(GuessedLetter, letter)
 		} else if letter == wordSelect {
-			foundLetter = true
+			FoundLetter = true
 
 		} else {
 			LooseTry()
@@ -32,19 +32,19 @@ func SelecCharac(letter string) Game {
 
 	}
 	return Game{
-		GuessedLetter: guessedLetter,
+		GuessedLetter: GuessedLetter,
 	}
 }
 func GetGuessedWord() []string {
-	return guessedWord
+	return GuessedWord
 }
 func GetGuessedLetter() []string {
-	return guessedLetter
+	return GuessedLetter
 }
 func GetTryAttempt() int {
-	return tryAttempt
+	return TryAttempt
 }
 
 func LooseTry() {
-	tryAttempt--
+	TryAttempt--
 }

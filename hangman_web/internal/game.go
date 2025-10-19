@@ -6,20 +6,20 @@ import (
 )
 
 func GameInit(filePath string) Game {
-	word = ChooseWord(filePath)
-	guessedWord = make([]string, len(word))
-	for i := 0; i < len(word); i++ {
-		guessedWord[i] = "_"
+	Word = ChooseWord(filePath)
+	GuessedWord = make([]string, len(Word))
+	for i := 0; i < len(Word); i++ {
+		GuessedWord[i] = "_"
 	}
-	guessedLetter = []string{}
+	GuessedLetter = []string{}
 	RevealLetters()
 
-	tryAttempt = 10
+	TryAttempt = 10
 	return Game{
-		GuessedWord: guessedWord,
+		GuessedWord: GuessedWord,
 		WordSelect:  wordSelect,
-		Try:         tryAttempt,
-		Alphabet:    alphabet,
+		Try:         TryAttempt,
+		Alphabet:    Alphabet,
 	}
 }
 func RevealLetters() {
@@ -31,10 +31,10 @@ func RevealLetters() {
 		letterToReveal := string(wordSelect[pos])
 
 		for j := 0; j < len(wordSelect); j++ {
-			if string(wordSelect[j]) == letterToReveal && guessedWord[j] == "_" {
-				guessedWord[j] = letterToReveal
-				if !contains(guessedLetter, letterToReveal) {
-					guessedLetter = append(guessedLetter, letterToReveal)
+			if string(wordSelect[j]) == letterToReveal && GuessedWord[j] == "_" {
+				GuessedWord[j] = letterToReveal
+				if !contains(GuessedLetter, letterToReveal) {
+					GuessedLetter = append(GuessedLetter, letterToReveal)
 				}
 			}
 		}

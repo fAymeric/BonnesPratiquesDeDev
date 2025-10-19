@@ -17,13 +17,23 @@ type Game struct {
 var scores []ScoreEntry
 
 var Score int
-var user string
-var currentGame Game
-var alphabet = []string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
+var User string
+var CurrentGame Game
+var Alphabet = []string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
 	"n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"}
 
-var word string
-var guessedWord []string
-var guessedLetter []string
-var tryAttempt int
-var foundLetter bool
+var Word string
+var GuessedWord []string
+var GuessedLetter []string
+var TryAttempt int
+var FoundLetter bool
+
+type WinLoosePageData struct {
+	Language   string
+	PageTitle  string
+	TextWin    string
+	TextLoose  string
+	LinkHome   string
+	LinkReplay string
+	WordSelect string
+}

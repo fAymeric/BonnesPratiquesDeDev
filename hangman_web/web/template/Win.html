@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{.Language}}">
 <head>
   <meta charset="UTF-8">
-  <title>Win-Seite</title>
+  <title>{{.PageTitle}}</title>
   <link rel="stylesheet" type="text/css" href="../web/static/style.css">
-  <script type ="text/javascript" src="web/js/script.js"></script>
+  <script type="text/javascript" src="web/js/script.js"></script>
 </head>
 <body id="win">
 <div class="textWin">
-  <p>Gut gemacht, du hast es geschafft zu fliehen... Aber wie lange...</p>
+  <p>{{.TextWin}}</p>
 </div>
 <div class="CardContainerEnd">
   <div class="cardEnd">
     <div class="InfoPresEnd">
-      <p><a href="/">Zurück zum Hauptmenü</a></p>
+      <p><a href="/">{{.LinkHome}}</a></p>
     </div>
   </div>
   <div class="cardEnd">
     <div class="InfoPresEnd">
-      <p><a href="/language">Willst du noch einmal spielen ?</a> </p>
+      <p><a href="/language">{{.LinkReplay}}</a></p>
     </div>
   </div>
 </div>

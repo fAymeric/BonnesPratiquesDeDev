@@ -20,7 +20,7 @@ func EnHardPage(w http.ResponseWriter, r *http.Request) { //calls GamePage func 
 func EnGamePage(w http.ResponseWriter, r *http.Request, difficulty string) {
 	Tg := template.Must(template.ParseFiles("web/template/En/GamePageEn.html"))
 
-	if user == "" {
+	if User == "" {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
@@ -40,8 +40,8 @@ func EnGamePage(w http.ResponseWriter, r *http.Request, difficulty string) {
 	}
 
 	// Initialize game if not already done
-	if currentGame.WordSelect == "" {
-		currentGame = GameInit(wordFile)
+	if CurrentGame.WordSelect == "" {
+		CurrentGame = GameInit(wordFile)
 	}
 
 	// Handle form POST
@@ -52,34 +52,34 @@ func EnGamePage(w http.ResponseWriter, r *http.Request, difficulty string) {
 		SelecCharac(guess)
 		SelecCharac(guessWord)
 
-		currentGame.GuessedWord = GetGuessedWord()
-		currentGame.GuessedLetter = GetGuessedLetter()
-		currentGame.Try = GetTryAttempt()
-		currentGame.Alphabet = alphabet
+		CurrentGame.GuessedWord = GetGuessedWord()
+		CurrentGame.GuessedLetter = GetGuessedLetter()
+		CurrentGame.Try = GetTryAttempt()
+		CurrentGame.Alphabet = Alphabet
 
 		if GetTryAttempt() == 0 {
-			http.Redirect(w, r, "/EnLoose", http.StatusFound)
+			RenderLoosePage(w, r, "en")
 			return
 		}
-		if CheckVictory() || currentGame.WordSelect == guessWord {
-			http.Redirect(w, r, "/EnWin", http.StatusFound)
+		if CheckVictory() || CurrentGame.WordSelect == guessWord {
+			RenderWinPage(w, r, "en")
 			Score++
 			updated := false
 			for i, scoreEntry := range scores {
-				if scoreEntry.Pseudo == user {
+				if scoreEntry.Pseudo == User {
 					scores[i].Scoreperso = Score
 					updated = true
 					break
 				}
 			}
-			if !updated && user != "" {
-				scores = append(scores, ScoreEntry{Pseudo: user, Scoreperso: Score})
+			if !updated && User != "" {
+				scores = append(scores, ScoreEntry{Pseudo: User, Scoreperso: Score})
 			}
 			return
 		}
 	}
 
-	err := Tg.Execute(w, currentGame)
+	err := Tg.Execute(w, CurrentGame)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}

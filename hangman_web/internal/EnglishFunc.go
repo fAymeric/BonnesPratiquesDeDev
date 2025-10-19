@@ -7,19 +7,19 @@ import (
 
 func EnPage(w http.ResponseWriter, r *http.Request) {
 	Tg := template.Must(template.ParseFiles("web/template/En/En.html"))
-	if user == "" {
+	if User == "" {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
-	currentGame = Game{}
+	CurrentGame = Game{}
 	err := Tg.Execute(w, nil)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }
 func EnWinpage(w http.ResponseWriter, r *http.Request) {
-	Tg := template.Must(template.ParseFiles("web/template/En/EnWin.html"))
-	if user == "" {
+	Tg := template.Must(template.ParseFiles("web/template/Win.html"))
+	if User == "" {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
@@ -29,15 +29,15 @@ func EnWinpage(w http.ResponseWriter, r *http.Request) {
 	}
 }
 func EnLoosepage(w http.ResponseWriter, r *http.Request) {
-	Tg := template.Must(template.ParseFiles("web/template/En/EnLoose.html"))
-	if user == "" {
+	Tg := template.Must(template.ParseFiles("web/template/Loose.html"))
+	if User == "" {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
 	looseData := struct {
 		WordSelect string
 	}{
-		WordSelect: currentGame.WordSelect,
+		WordSelect: CurrentGame.WordSelect,
 	}
 	err := Tg.Execute(w, looseData)
 	if err != nil {

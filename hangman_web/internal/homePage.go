@@ -8,7 +8,7 @@ import (
 func Homepage(w http.ResponseWriter, r *http.Request) {
 	// Only append the score if it's not already in the scores list
 	for _, scoreEntry := range scores {
-		if scoreEntry.Pseudo == user {
+		if scoreEntry.Pseudo == User {
 			break
 		}
 	}

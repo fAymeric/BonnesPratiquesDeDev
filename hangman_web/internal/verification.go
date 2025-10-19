@@ -25,8 +25,8 @@ func CheckLetter(letter string) bool {
 }
 
 func CheckVictory() bool { // looking for all the letters and compare to wordselect
-	for _, j := range word {
-		if !contains(guessedLetter, string(j)) {
+	for _, j := range Word {
+		if !contains(GuessedLetter, string(j)) {
 			return false
 		}
 	}
@@ -34,16 +34,16 @@ func CheckVictory() bool { // looking for all the letters and compare to wordsel
 }
 
 func CheckLetterWord(letter string) {
-	for i := 0; i < len(word); i++ {
-		if letter == string(word[i]) {
-			foundLetter = true
-			guessedWord[i] = letter
+	for i := 0; i < len(Word); i++ {
+		if letter == string(Word[i]) {
+			FoundLetter = true
+			GuessedWord[i] = letter
 		}
 	}
 }
 
 func CheckLetterAlreadySay(letter string) bool {
-	if !contains(guessedLetter, letter) { // add the letter to guessedletters array
+	if !contains(GuessedLetter, letter) { // add the letter to guessedletters array
 		return true
 	}
 	fmt.Println("you already guessed that letter")

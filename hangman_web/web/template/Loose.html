@@ -1,25 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{.Language}}">
 <head>
   <meta charset="UTF-8">
-  <title>Page de défaite</title>
+  <title>{{.PageTitle}}</title>
   <link rel="stylesheet" type="text/css" href="../web/static/style.css">
-  <script type ="text/javascript" src="web/js/script.js"></script>
+  <script type="text/javascript" src="web/js/script.js"></script>
 </head>
 <body id="loose">
 <div class="textLoose">
-<p> Tu es mort... Au moins ta chair aura servi à quelque chose</p>
-<p> Le mot était : {{.WordSelect}} </p>
+  <p>{{.TextLoose}} : {{.WordSelect}}</p>
 </div>
 <div class="CardContainerEnd">
   <div class="cardEnd">
     <div class="InfoPresEnd">
-      <p><a href="/">Retour au menu principal</a></p>
+      <p><a href="/">{{.LinkHome}}</a></p>
     </div>
   </div>
   <div class="cardEnd">
     <div class="InfoPresEnd">
-      <p><a href="/language">Envie de rejouer ?</a> </p>
+      <p><a href="/language">{{.LinkReplay}}</a></p>
     </div>
   </div>
 </div>
