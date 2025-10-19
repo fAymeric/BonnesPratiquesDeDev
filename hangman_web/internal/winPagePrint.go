@@ -12,25 +12,25 @@ func RenderWinPage(w http.ResponseWriter, r *http.Request, language string) {
 	var data WinLoosePageData
 
 	switch language {
-	case "fr":
+	case "Fr":
 		data = WinLoosePageData{
-			Language:   "fr",
+			Language:   "Fr",
 			PageTitle:  "Page de victoire",
 			TextWin:    "Bien joué, tu as réussi à t'échapper... Mais pour combien de temps...",
 			LinkHome:   "Retour au menu principal",
 			LinkReplay: "Envie de rejouer ?",
 		}
-	case "en":
+	case "En":
 		data = WinLoosePageData{
-			Language:   "en",
+			Language:   "En",
 			PageTitle:  "Victory Page",
 			TextWin:    "Well done, you managed to escape... But for how long...",
 			LinkHome:   "Back to main menu",
 			LinkReplay: "Want to play again?",
 		}
-	case "de":
+	case "Deutsch":
 		data = WinLoosePageData{
-			Language:   "de",
+			Language:   "Deutsch",
 			PageTitle:  "Siegesseite",
 			TextWin:    "Gut gemacht, du bist entkommen... Aber wie lange noch...",
 			LinkHome:   "Zurück zum Hauptmenü",

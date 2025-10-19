@@ -13,25 +13,25 @@ func RenderLoosePage(w http.ResponseWriter, r *http.Request, language string) {
 
 	// Texte selon la langue
 	switch language {
-	case "fr":
+	case "Fr":
 		data = WinLoosePageData{
-			Language:   "fr",
+			Language:   "Fr",
 			PageTitle:  "Page de défaite",
 			TextLoose:  "Tu es mort... Au moins ta chair aura servi à quelque chose. Le mot était",
 			LinkHome:   "Retour au menu principal",
 			LinkReplay: "Envie de rejouer ?",
 		}
-	case "en":
+	case "En":
 		data = WinLoosePageData{
-			Language:   "en",
+			Language:   "En",
 			PageTitle:  "Lose page",
 			TextLoose:  "You Died... At least your flesh has been useful. The word was",
 			LinkHome:   "Back to main menu",
 			LinkReplay: "Want to play again?",
 		}
-	case "de":
+	case "Deutsch":
 		data = WinLoosePageData{
-			Language:   "de",
+			Language:   "Deutsch",
 			PageTitle:  "Lose Seite",
 			TextLoose:  "Du bist gestorben ... Zumindest war dein Fleisch nützlich. Das Wort war",
 			LinkHome:   "Zurück zum Hauptmenü",

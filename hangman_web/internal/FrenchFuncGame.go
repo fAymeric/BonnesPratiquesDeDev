@@ -16,7 +16,7 @@ func FrHardPage(w http.ResponseWriter, r *http.Request) {
 }
 
 func FrGamePage(w http.ResponseWriter, r *http.Request, difficulty string) {
-	Tg := template.Must(template.ParseFiles("web/template/Fr/GamePageFr.html"))
+	Tg := template.Must(template.ParseFiles("web/template/Game.html"))
 
 	if User == "" {
 		http.Redirect(w, r, "/", http.StatusSeeOther)

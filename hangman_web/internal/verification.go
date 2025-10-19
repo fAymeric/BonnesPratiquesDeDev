@@ -49,3 +49,17 @@ func CheckLetterAlreadySay(letter string) bool {
 	fmt.Println("you already guessed that letter")
 	return false
 }
+
+func UpdateScore(user string) {
+	updated := false
+	for i, scoreEntry := range scores {
+		if scoreEntry.Pseudo == user {
+			scores[i].Scoreperso = Score
+			updated = true
+			break
+		}
+	}
+	if !updated && user != "" {
+		scores = append(scores, ScoreEntry{Pseudo: user, Scoreperso: Score})
+	}
+}
