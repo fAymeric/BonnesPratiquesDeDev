@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>The Hangman</title>
+    <title>Le Pendu</title>
     <link rel="stylesheet" type="text/css" href="../web/static/style.css">
     <script type ="text/javascript" src="web/js/script.js"></script>
 </head>
@@ -15,14 +15,14 @@
     <button class="control-button" onclick="pauseMusic()"><img src="../web/static/MusicOFF.png" alt="musique éteinte" class="imgMusique"></button>
 </div>
 <div class="Title">
-    <p> It's time to play... </p>
+    <p> Et maintenant jouons... </p>
 </div>
 <div class="gameprint">
-    <p>word : {{range .GuessedWord}}
+    <p>Mot : {{range .GuessedWord}}
         {{.}}
         {{end}}
     </p>
-    <p> Already used Letter : {{.GuessedLetter}}</p>
+    <p> Lettres déjà trouvées : {{.GuessedLetter}}</p>
 </div>
 {{ if and (ge .Try 1) (le .Try 9) }}
 <img class="overlayImage" src="../web/static/{{ .Try }}.png" width="1280">
@@ -39,7 +39,7 @@
 <div class="BackButton">
     <div class="card">
         <div class="InfoPres">
-            <p><a href="/En">Back</a></p>
+            <p><a href="/Fr">Retour</a></p>
         </div>
     </div>
 </div>
