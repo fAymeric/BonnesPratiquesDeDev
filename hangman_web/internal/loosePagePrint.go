@@ -2,6 +2,7 @@ package internal
 
 import (
 	"bytes"
+	"hangman_web/internal/shared"
 	"html/template"
 	"net/http"
 )
@@ -9,12 +10,12 @@ import (
 func RenderLoosePage(w http.ResponseWriter, r *http.Request, language string) {
 	tmpl := template.Must(template.ParseFiles("web/template/Loose.html"))
 
-	var data WinLoosePageData
+	var data shared.WinLoosePageData
 
 	// Texte selon la langue
 	switch language {
 	case "Fr":
-		data = WinLoosePageData{
+		data = shared.WinLoosePageData{
 			Language:   "Fr",
 			PageTitle:  "Page de défaite",
 			TextLoose:  "Tu es mort... Au moins ta chair aura servi à quelque chose. Le mot était",
@@ -22,7 +23,7 @@ func RenderLoosePage(w http.ResponseWriter, r *http.Request, language string) {
 			LinkReplay: "Envie de rejouer ?",
 		}
 	case "En":
-		data = WinLoosePageData{
+		data = shared.WinLoosePageData{
 			Language:   "En",
 			PageTitle:  "Lose page",
 			TextLoose:  "You Died... At least your flesh has been useful. The word was",
@@ -30,7 +31,7 @@ func RenderLoosePage(w http.ResponseWriter, r *http.Request, language string) {
 			LinkReplay: "Want to play again?",
 		}
 	case "Deutsch":
-		data = WinLoosePageData{
+		data = shared.WinLoosePageData{
 			Language:   "Deutsch",
 			PageTitle:  "Lose Seite",
 			TextLoose:  "Du bist gestorben ... Zumindest war dein Fleisch nützlich. Das Wort war",
@@ -42,7 +43,7 @@ func RenderLoosePage(w http.ResponseWriter, r *http.Request, language string) {
 		return
 	}
 
-	data.WordSelect = CurrentGame.WordSelect
+	data.WordSelect = shared.CurrentGame.WordSelect
 
 	// Rendu dans un buffer d'abord
 	var buf bytes.Buffer

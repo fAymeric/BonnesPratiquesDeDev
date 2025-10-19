@@ -2,6 +2,7 @@ package internal
 
 import (
 	"bytes"
+	"hangman_web/internal/shared"
 	"html/template"
 	"net/http"
 )
@@ -9,11 +10,11 @@ import (
 func RenderWinPage(w http.ResponseWriter, r *http.Request, language string) {
 	tmpl := template.Must(template.ParseFiles("web/template/Win.html"))
 
-	var data WinLoosePageData
+	var data shared.WinLoosePageData
 
 	switch language {
 	case "Fr":
-		data = WinLoosePageData{
+		data = shared.WinLoosePageData{
 			Language:   "Fr",
 			PageTitle:  "Page de victoire",
 			TextWin:    "Bien joué, tu as réussi à t'échapper... Mais pour combien de temps...",
@@ -21,7 +22,7 @@ func RenderWinPage(w http.ResponseWriter, r *http.Request, language string) {
 			LinkReplay: "Envie de rejouer ?",
 		}
 	case "En":
-		data = WinLoosePageData{
+		data = shared.WinLoosePageData{
 			Language:   "En",
 			PageTitle:  "Victory Page",
 			TextWin:    "Well done, you managed to escape... But for how long...",
@@ -29,7 +30,7 @@ func RenderWinPage(w http.ResponseWriter, r *http.Request, language string) {
 			LinkReplay: "Want to play again?",
 		}
 	case "Deutsch":
-		data = WinLoosePageData{
+		data = shared.WinLoosePageData{
 			Language:   "Deutsch",
 			PageTitle:  "Siegesseite",
 			TextWin:    "Gut gemacht, du bist entkommen... Aber wie lange noch...",

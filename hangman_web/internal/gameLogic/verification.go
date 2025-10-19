@@ -1,7 +1,8 @@
-package internal
+package gameLogic
 
 import (
 	"fmt"
+	"hangman_web/internal/shared"
 )
 
 func contains(slice []string, item string) bool { // use for checking if a letter is already in an array
@@ -25,8 +26,8 @@ func CheckLetter(letter string) bool {
 }
 
 func CheckVictory() bool { // looking for all the letters and compare to wordselect
-	for _, j := range Word {
-		if !contains(GuessedLetter, string(j)) {
+	for _, j := range shared.Word {
+		if !contains(shared.GuessedLetter, string(j)) {
 			return false
 		}
 	}
@@ -34,16 +35,16 @@ func CheckVictory() bool { // looking for all the letters and compare to wordsel
 }
 
 func CheckLetterWord(letter string) {
-	for i := 0; i < len(Word); i++ {
-		if letter == string(Word[i]) {
-			FoundLetter = true
-			GuessedWord[i] = letter
+	for i := 0; i < len(shared.Word); i++ {
+		if letter == string(shared.Word[i]) {
+			shared.FoundLetter = true
+			shared.GuessedWord[i] = letter
 		}
 	}
 }
 
 func CheckLetterAlreadySay(letter string) bool {
-	if !contains(GuessedLetter, letter) { // add the letter to guessedletters array
+	if !contains(shared.GuessedLetter, letter) { // add the letter to guessedletters array
 		return true
 	}
 	fmt.Println("you already guessed that letter")
@@ -52,14 +53,14 @@ func CheckLetterAlreadySay(letter string) bool {
 
 func UpdateScore(user string) {
 	updated := false
-	for i, scoreEntry := range scores {
+	for i, scoreEntry := range shared.Scores {
 		if scoreEntry.Pseudo == user {
-			scores[i].Scoreperso = Score
+			shared.Scores[i].Scoreperso = shared.Score
 			updated = true
 			break
 		}
 	}
 	if !updated && user != "" {
-		scores = append(scores, ScoreEntry{Pseudo: user, Scoreperso: Score})
+		shared.Scores = append(shared.Scores, shared.ScoreEntry{Pseudo: user, Scoreperso: shared.Score})
 	}
 }

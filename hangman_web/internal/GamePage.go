@@ -2,6 +2,8 @@ package internal
 
 import (
 	"fmt"
+	"hangman_web/internal/gameLogic"
+	"hangman_web/internal/shared"
 	"html/template"
 	"net/http"
 	"strings"
@@ -35,7 +37,7 @@ func GamePage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if User == "" {
+	if shared.User == "" {
 		fmt.Println("❌ User not logged in")
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
@@ -54,33 +56,33 @@ func GamePage(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println("➡️ Word file:", wordFile)
 
-	if CurrentGame.WordSelect == "" {
+	if shared.CurrentGame.WordSelect == "" {
 		fmt.Println("➡️ Initialising game...")
-		CurrentGame = GameInit(wordFile)
+		shared.CurrentGame = gameLogic.GameInit(wordFile)
 	}
 
 	if r.Method == http.MethodPost {
 		fmt.Println("➡️ Handling POST")
 		guess := r.FormValue("guess")
 		guessWord := r.FormValue("guessWord")
-		SelecCharac(guess)
-		SelecCharac(guessWord)
+		gameLogic.SelecCharac(guess)
+		gameLogic.SelecCharac(guessWord)
 
-		CurrentGame.GuessedWord = GetGuessedWord()
-		CurrentGame.GuessedLetter = GetGuessedLetter()
-		CurrentGame.Try = GetTryAttempt()
-		CurrentGame.Alphabet = Alphabet
+		shared.CurrentGame.GuessedWord = gameLogic.GetGuessedWord()
+		shared.CurrentGame.GuessedLetter = gameLogic.GetGuessedLetter()
+		shared.CurrentGame.Try = gameLogic.GetTryAttempt()
+		shared.CurrentGame.Alphabet = shared.Alphabet
 
-		if GetTryAttempt() == 0 {
+		if gameLogic.GetTryAttempt() == 0 {
 			fmt.Println("➡️ User lost")
 			RenderLoosePage(w, r, lang)
 			return
 		}
-		if CheckVictory() || CurrentGame.WordSelect == guessWord {
+		if gameLogic.CheckVictory() || shared.CurrentGame.WordSelect == guessWord {
 			fmt.Println("🏆 User won")
 			RenderWinPage(w, r, lang)
-			Score++
-			UpdateScore(User)
+			shared.Score++
+			gameLogic.UpdateScore(shared.User)
 			return
 		}
 	}
@@ -90,10 +92,10 @@ func GamePage(w http.ResponseWriter, r *http.Request) {
 
 	// Données pour le template
 	data := struct {
-		Game
+		shared.Game
 		Texts map[string]string
 	}{
-		Game:  CurrentGame,
+		Game:  shared.CurrentGame,
 		Texts: localized,
 	}
 

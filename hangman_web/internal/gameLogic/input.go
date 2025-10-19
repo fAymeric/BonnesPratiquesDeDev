@@ -1,29 +1,30 @@
-package internal
+package gameLogic
 
 import (
 	"fmt"
+	"hangman_web/internal/shared"
 	"strings"
 )
 
-func SelecCharac(letter string) Game {
+func SelecCharac(letter string) shared.Game {
 	//fmt.Println("test de lettre : ", letter)
-	FoundLetter = false
+	shared.FoundLetter = false
 	letter = strings.ToLower(letter)
 	if !CheckLetter(letter) || !CheckLetterAlreadySay(letter) {
-		return Game{}
+		return shared.Game{}
 	} else {
 		if len(letter) <= 1 {
 			fmt.Println("test1 de lettre : ", letter)
 			CheckLetterWord(letter)
-			if FoundLetter == false {
+			if shared.FoundLetter == false {
 				fmt.Println("Your caracter is not in the word")
 				LooseTry()
 			} else {
 				fmt.Println("Your caracter is in the word")
 			}
-			GuessedLetter = append(GuessedLetter, letter)
+			shared.GuessedLetter = append(shared.GuessedLetter, letter)
 		} else if letter == wordSelect {
-			FoundLetter = true
+			shared.FoundLetter = true
 
 		} else {
 			LooseTry()
@@ -31,20 +32,20 @@ func SelecCharac(letter string) Game {
 		}
 
 	}
-	return Game{
-		GuessedLetter: GuessedLetter,
+	return shared.Game{
+		GuessedLetter: shared.GuessedLetter,
 	}
 }
 func GetGuessedWord() []string {
-	return GuessedWord
+	return shared.GuessedWord
 }
 func GetGuessedLetter() []string {
-	return GuessedLetter
+	return shared.GuessedLetter
 }
 func GetTryAttempt() int {
-	return TryAttempt
+	return shared.TryAttempt
 }
 
 func LooseTry() {
-	TryAttempt--
+	shared.TryAttempt--
 }
