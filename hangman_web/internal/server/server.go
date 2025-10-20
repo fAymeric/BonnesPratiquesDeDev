@@ -17,9 +17,9 @@ func StartServer() {
 	http.HandleFunc("/En/easy", internal.GamePage)
 	http.HandleFunc("/En/medium", internal.GamePage)
 	http.HandleFunc("/En/hard", internal.GamePage)
-	http.HandleFunc("/Deutsh/easy", internal.GamePage)
-	http.HandleFunc("/Deutsh/medium", internal.GamePage)
-	http.HandleFunc("/Deutsh/hard", internal.GamePage)
+	http.HandleFunc("/Deutsch/easy", internal.GamePage)
+	http.HandleFunc("/Deutsch/medium", internal.GamePage)
+	http.HandleFunc("/Deutsch/hard", internal.GamePage)
 	http.HandleFunc("/JS/", internal.FilesHandler)
 	http.HandleFunc("/FrWin", func(w http.ResponseWriter, r *http.Request) {
 		internal.RenderWinPage(w, r, "Fr")
