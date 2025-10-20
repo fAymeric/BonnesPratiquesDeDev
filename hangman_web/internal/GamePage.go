@@ -44,21 +44,21 @@ func GamePage(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Construire le chemin vers les mots
-	wordFile := fmt.Sprintf("internal/data/%s/words", lang)
+	WordFile := fmt.Sprintf("internal/data/%s/words", lang)
 	switch difficulty {
 	case "easy":
-		wordFile += ".txt"
+		WordFile += ".txt"
 	case "medium":
-		wordFile += "2.txt"
+		WordFile += "2.txt"
 	case "hard":
-		wordFile += "3.txt"
+		WordFile += "3.txt"
 	}
 
-	fmt.Println("➡️ Word file:", wordFile)
+	fmt.Println("➡️ Word file:", WordFile)
 
 	if shared.CurrentGame.WordSelect == "" {
 		fmt.Println("➡️ Initialising game...")
-		shared.CurrentGame = gameLogic.GameInit(wordFile)
+		shared.CurrentGame = gameLogic.GameInit(WordFile)
 	}
 
 	if r.Method == http.MethodPost {
@@ -76,7 +76,6 @@ func GamePage(w http.ResponseWriter, r *http.Request) {
 		if gameLogic.GetTryAttempt() == 0 {
 			fmt.Println("➡️ User lost")
 			RenderLoosePage(w, r, lang)
-			shared.CurrentGame = gameLogic.GameInit(wordFile)
 			return
 		}
 		if gameLogic.CheckVictory() || shared.CurrentGame.WordSelect == guessWord {
@@ -84,7 +83,6 @@ func GamePage(w http.ResponseWriter, r *http.Request) {
 			RenderWinPage(w, r, lang)
 			shared.Score++
 			gameLogic.UpdateScore(shared.User)
-			shared.CurrentGame = gameLogic.GameInit(wordFile)
 			return
 		}
 	}
@@ -101,9 +99,9 @@ func GamePage(w http.ResponseWriter, r *http.Request) {
 		Texts: localized,
 	}
 
-	fmt.Println("➡️ Rendering template web/template/GamePage.html")
+	fmt.Println("➡️ Rendering template web/template/game.html")
 
-	tmpl, err := template.ParseFiles("web/template/Game.html")
+	tmpl, err := template.ParseFiles("web/template/game.html")
 	if err != nil {
 		fmt.Println("❌ Error parsing template:", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)

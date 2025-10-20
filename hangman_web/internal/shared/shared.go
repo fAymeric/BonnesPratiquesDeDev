@@ -14,7 +14,7 @@ type Game struct {
 	Alphabet      []string
 }
 
-// Données globales
+// Global Data
 var (
 	Scores      []ScoreEntry
 	Score       int

@@ -8,7 +8,7 @@ import (
 )
 
 func RenderWinPage(w http.ResponseWriter, r *http.Request, language string) {
-	tmpl := template.Must(template.ParseFiles("web/template/Win.html"))
+	tmpl := template.Must(template.ParseFiles("web/template/win.html"))
 
 	var data shared.WinLoosePageData
 

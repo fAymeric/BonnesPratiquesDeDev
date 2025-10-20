@@ -50,7 +50,7 @@ func DifficultyPage(w http.ResponseWriter, r *http.Request) {
 		Texts: texts,
 	}
 
-	tmpl, err := template.ParseFiles("web/template/Difficulty.html")
+	tmpl, err := template.ParseFiles("web/template/difficulty.html")
 	if err != nil {
 		http.Error(w, "Erreur chargement template", http.StatusInternalServerError)
 		return

@@ -8,7 +8,7 @@ import (
 )
 
 func RenderLoosePage(w http.ResponseWriter, r *http.Request, language string) {
-	tmpl := template.Must(template.ParseFiles("web/template/Loose.html"))
+	tmpl := template.Must(template.ParseFiles("web/template/loose.html"))
 
 	var data shared.WinLoosePageData
 
