@@ -13,6 +13,10 @@ func LanguagePage(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
+	err := r.ParseForm()
+	if err != nil {
+		return
+	}
 	newUser := r.FormValue("name")
 	if shared.User == "" {
 		shared.User = r.FormValue("name")
