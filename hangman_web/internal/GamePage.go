@@ -76,6 +76,7 @@ func GamePage(w http.ResponseWriter, r *http.Request) {
 		if gameLogic.GetTryAttempt() == 0 {
 			fmt.Println("➡️ User lost")
 			RenderLoosePage(w, r, lang)
+			shared.CurrentGame = gameLogic.GameInit(wordFile)
 			return
 		}
 		if gameLogic.CheckVictory() || shared.CurrentGame.WordSelect == guessWord {
@@ -83,6 +84,7 @@ func GamePage(w http.ResponseWriter, r *http.Request) {
 			RenderWinPage(w, r, lang)
 			shared.Score++
 			gameLogic.UpdateScore(shared.User)
+			shared.CurrentGame = gameLogic.GameInit(wordFile)
 			return
 		}
 	}
