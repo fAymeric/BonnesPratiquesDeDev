@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="{{.Lang}}">
+<head>
+    <meta charset="UTF-8">
+    <title>{{.Texts.title}}</title>
+    <link rel="stylesheet" type="text/css" href="../web/static/style.css">
+    <script type="text/javascript" src="web/js/script.js"></script>
+</head>
+<body>
+    <audio class="BackgroundMusic" id="background-music" autoplay loop controls>
+        <source src="web/static/HorrorMusic.mp4" type="audio/mpeg">
+    </audio>
+
+    <div class="controlMusic">
+        <button class="control-button" onclick="playMusic()">
+            <img src="web/static/MusicON.png" alt="musique allumée" class="imgMusique">
+        </button>
+        <button class="control-button" onclick="pauseMusic()">
+            <img src="web/static/MusicOFF.png" alt="musique éteinte" class="imgMusique">
+        </button>
+    </div>
+
+    <div class="Title">
+        <p>{{.Texts.title}}</p>
+    </div>
+
+    <div class="CardContainer">
+        <div class="card">
+            <div class="InfoPres">
+                <p><a href="/{{.Lang}}/easy">{{.Texts.easy}}</a></p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="InfoPres">
+                <p><a href="/{{.Lang}}/medium">{{.Texts.medium}}</a></p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="InfoPres">
+                <p><a href="/{{.Lang}}/hard">{{.Texts.hard}}</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="BackButton">
+        <div class="card">
+            <div class="InfoPres">
+                <p><a href="/language">{{.Texts.back}}</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,339 @@
+@font-face {
+    font-family: 'Murder on 17th St';
+    src: url('./Murder on 17th St.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    background-image: url('Fond ecran Hangman Web.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+}
+.Title{
+    font-family:"Murder on 17th St" ;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 100%;
+}
+.Title p{
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 100%;
+    font-size: 5vw;
+    max-font-size: 7vw;
+    color: red;
+}
+.BackButton{
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+    height: 50vh;
+    max-height: 100vh;
+    width: 100%;
+    max-width: 100%;
+    cursor: pointer;
+}
+
+.card {
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 30px;
+    border: 2px solid black;
+    box-shadow: 0 4px 8px
+    rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: calc(20% - 20px);
+    height: auto;
+    display: flex;
+    flex-direction:column;
+}
+.CardContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+}
+.InfoPres {
+    padding: 5px;
+    text-align: start;
+}
+.InfoPres p {
+    font-family:"Murder on 17th St" ;
+    margin: 0;
+    color: red;
+    font-size: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+}
+
+p {
+    font-family:"Murder on 17th St" ;
+    text-align: center;
+    font-size: 60px;
+    color: red;
+}
+
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+section {
+    padding: 20px;
+    text-align: center;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+.card:hover{
+    transform: scale(1.2);
+}
+.controlMusic {
+    display: flex;
+    position: fixed;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    bottom: 10px;
+    right: 10px;
+}
+.control-button {
+    background-color: rgba(139,0,0,0.5);
+    border-radius: 50%;
+    border: 2px solid black;
+    box-shadow: 0 4px 8px
+    rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 4vw;
+    height: 4vw;
+    display: flex;
+    flex-direction:column;
+    cursor: pointer;
+}
+
+.BackgroundMusic{
+    display: none;
+}
+
+.gameprint p{
+    font-family: 'Murder on 17th St';
+    margin: 0;
+    color: red;
+    font-size: 5vw;
+}
+.username b{
+    display: flex;
+    font-family: 'Murder on 17th St';
+    color: red;
+    justify-content: center;
+}
+.submitUser{
+    font-family: 'Murder on 17th St';
+    color: red;
+    background-color: rgba(0,0,0,0.1);
+    border-color: rgba(0,0,0,0.1);
+}
+.playButton{
+    font-family: 'Murder on 17th St';
+    color: red;
+    font-size: 20px;
+    background-color: rgba(0,0,0,0.1);
+    border-color: rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+.tableau-style {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 30px;
+    border: 2px solid black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 80%;
+    margin: 20px auto;
+    font-family: 'Murder on 17th St', sans-serif;
+    color: red;
+    font-size: 18px;
+    text-align: center;
+}
+
+.tableau-style th, .tableau-style td {
+    padding: 15px;
+}
+
+.tableau-style th {
+    background-color: rgba(0,0,0,0.1);
+    color: red;
+    font-weight: bold;
+}
+
+
+.tableau-style tr:hover {
+    background-color: #ddd;
+}
+
+.letters{
+    margin: 40px auto;
+    text-align: center;
+}
+.suppositionContainer{
+    flex-direction:column;
+    display:flex;
+    align-items: center;
+}
+.supposition {
+    font-family: 'Murder on 17th St';
+    color: red;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.buttonLetter{
+    font-family: 'Murder on 17th St';
+    color: red;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid black;
+    height: 40px;
+    width: 40px;
+    font-size: 30px;
+    cursor: pointer;
+}
+.overlayImage {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlayImage img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.overlayImage2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlayImage2 img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.CardContainerEnd{
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    align-items: flex-end;
+    bottom: 10px;
+}
+.cardEnd {
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 30px;
+    border: 2px solid black;
+    box-shadow: 0 4px 8px
+    rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: calc(20% - 20px);
+    height: auto;
+    display: flex;
+    flex-direction:column;
+    bottom: 10px;
+}
+.InfoPresEnd {
+    padding: 5px;
+    text-align: start;
+}
+.InfoPresEnd p {
+    font-family:"Murder on 17th St" ;
+    margin: 0;
+    color: red;
+    font-size: 1.5vw;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 100%;
+}
+
+#loose{
+    background-image: url('looseImg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+}
+.textLoose p{
+    font-family:"Murder on 17th St" ;
+    text-align: center;
+    font-size: 5vw;
+    max-font-size: 5vw;
+    color: red;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 100%;
+}
+#win{
+    background-image: url('Win2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+}
+.textWin p{
+    font-family:"Murder on 17th St" ;
+    text-align: center;
+    font-size: 5vw;
+    max-font-size: 5vw;
+    color: red;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 100%;
+}
+.cardEnd:hover{
+    transform: scale(1.2);
+}

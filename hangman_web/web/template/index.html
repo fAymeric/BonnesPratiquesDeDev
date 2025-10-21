@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hangman Web</title>
+    <link rel="stylesheet" type="text/css" href="web/static/style.css">
+    <script type ="text/javascript" src="web/js/script.js"></script>
+</head>
+<h1>
+</h1>
+<body>
+<audio class="BackgroundMusic" id="background-music" autoplay loop controls>
+    <source src="web/static/HorrorMusic.mp4" type="audio/mpeg">
+</audio>
+<div class="controlMusic">
+    <button class="control-button" onclick="playMusic()"><img src="web/static/MusicON.png" alt="musique allumée" class="imgMusique"> </button>
+    <button class="control-button" onclick="pauseMusic()"><img src="web/static/MusicOFF.png" alt="musique éteinte" class="imgMusique"></button>
+</div>
+<div class="Title">
+    <p> WELCOME TO HANGMAN </p>
+</div>
+<form autocomplete="off" action="/language" method="POST">
+    <div class="CardContainer">
+        <div class="card">
+            <label class ="username" for="uname"><b>Username</b></label>
+            <input class ="submitUser" type="text"  name="name" id="uname" pattern="[^ ]+"  required>
+            <input class ="playButton" type="submit" value="Play">
+        </div>
+    </div>
+</form>
+
+
+<table class="tableau-style">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Score</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{range .Scores}}
+    <tr>
+        <th>{{.Pseudo}}</th>
+        <th>{{.Scoreperso}}</th>
+    </tr>
+    {{end}}
+    </tbody>
+</table>
+
+
+
+</body>
+</html>
