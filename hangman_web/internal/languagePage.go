@@ -7,15 +7,19 @@ import (
 	"net/http"
 )
 
+// LanguagePage handles the language selection page.
+// It also initializes user data if a new user submits their name.
 func LanguagePage(w http.ResponseWriter, r *http.Request) {
+	// Parse the HTML template for the language selection page
 	Tg := template.Must(template.ParseFiles("web/template/language.html"))
 
-	// Redirection vers "/" si l'utilisateur n'est pas encore défini et la méthode n'est pas POST
+	// Redirect to home if user is not logged in
 	if r.Method != http.MethodPost && shared.User == "" {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
 
+	// Parse form values from POST request
 	err := r.ParseForm()
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -24,20 +28,22 @@ func LanguagePage(w http.ResponseWriter, r *http.Request) {
 
 	newUser := r.FormValue("name")
 
-	// Si un nouveau nom est soumis
+	// If a new username is submitted and different from the current user
 	if newUser != "" && newUser != shared.User {
+		// Update user info
 		shared.User = newUser
 		shared.Score = 0
 
-		// Réinitialisation du jeu
+		// Reset game-related data
 		shared.CurrentGame = shared.Game{}
 		shared.Word = ""
 		shared.GuessedLetter = []string{}
 		shared.GuessedWord = []string{}
 		shared.TryAttempt = 0
 
-		fmt.Println("Nouvel utilisateur :", shared.User)
+		fmt.Println("New user:", shared.User)
 	} else {
+		// If no new user, still reset the game state
 		shared.CurrentGame = shared.Game{}
 		shared.Word = ""
 		shared.GuessedLetter = []string{}
@@ -45,6 +51,7 @@ func LanguagePage(w http.ResponseWriter, r *http.Request) {
 		shared.TryAttempt = 0
 	}
 
+	// Render the language selection template
 	err = Tg.Execute(w, nil)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)

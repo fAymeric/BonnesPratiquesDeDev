@@ -7,11 +7,15 @@ import (
 	"net/http"
 )
 
+// RenderWinPage renders the victory page when the player wins the game.
+// It uses localized content based on the selected language.
 func RenderWinPage(w http.ResponseWriter, r *http.Request, language string) {
+	// Load the HTML template for the win page.
 	tmpl := template.Must(template.ParseFiles("web/template/win.html"))
 
 	var data shared.WinLoosePageData
 
+	// Select localized strings based on the language parameter
 	switch language {
 	case "Fr":
 		data = shared.WinLoosePageData{
@@ -38,18 +42,19 @@ func RenderWinPage(w http.ResponseWriter, r *http.Request, language string) {
 			LinkReplay: "Noch eine Runde?",
 		}
 	default:
-		http.Error(w, "Langue non prise en charge", http.StatusBadRequest)
+		// Return an error if the language is not supported
+		http.Error(w, "Unsupported language", http.StatusBadRequest)
 		return
 	}
 
-	// Rendu dans un buffer d'abord
+	// Render the template into a buffer
 	var buf bytes.Buffer
 	err := tmpl.Execute(&buf, data)
 	if err != nil {
-		http.Error(w, "Erreur interne lors du rendu de la page", http.StatusInternalServerError)
+		http.Error(w, "Internal error rendering the page", http.StatusInternalServerError)
 		return
 	}
 
-	// Écriture dans la réponse seulement si tout s’est bien passé
+	// If no error, write the fully rendered page to the response
 	buf.WriteTo(w)
 }

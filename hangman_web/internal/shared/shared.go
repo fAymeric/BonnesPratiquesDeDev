@@ -29,7 +29,7 @@ var (
 	FoundLetter   bool
 )
 
-// Structure pour les pages de victoire/défaite
+// Struct for win and loose
 type WinLoosePageData struct {
 	Language   string
 	PageTitle  string
@@ -40,7 +40,7 @@ type WinLoosePageData struct {
 	WordSelect string
 }
 
-// Structure pour la page de sélection de difficulté (multi-langue)
+// Struct for difficulty page
 type DifficultyPageData struct {
 	Lang  string
 	Texts map[string]string

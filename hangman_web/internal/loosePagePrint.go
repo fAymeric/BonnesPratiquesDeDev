@@ -7,12 +7,15 @@ import (
 	"net/http"
 )
 
+// RenderLoosePage renders the "lose" page when the player runs out of tries.
+// It uses localized text depending on the selected language and displays the correct word.
 func RenderLoosePage(w http.ResponseWriter, r *http.Request, language string) {
+	// Load the HTML template for the lose page.
 	tmpl := template.Must(template.ParseFiles("web/template/loose.html"))
 
 	var data shared.WinLoosePageData
 
-	// Texte selon la langue
+	// Select localized text content based on the chosen language
 	switch language {
 	case "Fr":
 		data = shared.WinLoosePageData{
@@ -39,20 +42,22 @@ func RenderLoosePage(w http.ResponseWriter, r *http.Request, language string) {
 			LinkReplay: "Willst du noch einmal spielen?",
 		}
 	default:
-		http.Error(w, "Langue non prise en charge", http.StatusBadRequest)
+		// Return error if language is unsupported
+		http.Error(w, "Unsupported language", http.StatusBadRequest)
 		return
 	}
 
+	// Add the correct word to the data to display to the user
 	data.WordSelect = shared.CurrentGame.WordSelect
 
-	// Rendu dans un buffer d'abord
+	// Render the template into a buffer first
 	var buf bytes.Buffer
 	err := tmpl.Execute(&buf, data)
 	if err != nil {
-		http.Error(w, "Erreur interne lors du rendu de la page", http.StatusInternalServerError)
+		http.Error(w, "Internal error while rendering page", http.StatusInternalServerError)
 		return
 	}
 
-	// Si tout est OK, écriture
+	// If successful, write the buffer contents to the response
 	buf.WriteTo(w)
 }

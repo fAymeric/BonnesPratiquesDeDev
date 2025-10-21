@@ -7,12 +7,10 @@
     <script type="text/javascript" src="/web/js/script.js"></script>
 </head>
 <body>
-    <!-- Musique de fond -->
     <audio class="BackgroundMusic" id="background-music" autoplay loop controls>
         <source src="/web/static/HorrorMusic.mp4" type="audio/mpeg">
     </audio>
 
-    <!-- Contrôles musique -->
     <div class="controlMusic">
         <button class="control-button" onclick="playMusic()">
             <img src="/web/static/MusicON.png" alt="musique allumée" class="imgMusique">
@@ -22,12 +20,10 @@
         </button>
     </div>
 
-    <!-- Titre du jeu -->
     <div class="Title">
         <p>{{.Texts.subtitle}}</p>
     </div>
 
-    <!-- Affichage du mot et des lettres -->
     <div class="gameprint">
         <p>{{.Texts.wordLabel}} :
             {{range .GuessedWord}} {{.}} {{end}}
@@ -35,12 +31,10 @@
         <p>{{.Texts.usedLetters}} : {{.GuessedLetter}}</p>
     </div>
 
-    <!-- Image du pendu -->
     {{ if and (ge .Try 1) (le .Try 9) }}
         <img class="overlayImage" src="/web/static/{{.Try}}.png" width="1280">
     {{ end }}
 
-    <!-- Lettres à cliquer -->
     <div class="letters">
         {{range .Alphabet}}
         <form method="post" style="display:inline;">
@@ -50,7 +44,6 @@
         {{end}}
     </div>
 
-    <!-- Bouton retour -->
     <div class="BackButton">
         <div class="card">
             <div class="InfoPres">
